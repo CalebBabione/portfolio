@@ -1,6 +1,5 @@
-import React from 'react'
 import fs from "fs";
-import Link from "next/link"
+import Link from "next/link";
 
 const getPostMetadata = () => {
     const folder = "app/blog/posts";
@@ -10,25 +9,21 @@ const getPostMetadata = () => {
     return slugs;
 };
 
-const bloghome = () => {
+const BlogPage = () => {
     const postMetadata = getPostMetadata();
+    const test = "test";
     const postPreviews = postMetadata.map((slug) => (
         <div>
-            <h2>{slug}</h2>
+            <Link href={`posts/${slug}`}>
+                <h1>{slug}</h1>
+            </Link>
         </div>
+        
     ));
-  return <div>
+        console.log(postMetadata);
+    return <div>{postPreviews}</div>;
+    
 
-    <section>
-        <h1>Caleb's Blog</h1>
-    </section>
+};
 
-    <Link href="blog/posts/${slug}"><h2>{postPreviews}</h2></Link>
-    
-    
-    
-    
-    </div>;
-}
-
-export default bloghome
+export default BlogPage

@@ -10,7 +10,7 @@ export default function Home() {
     //test
     <main className="text-center">
       <section className="">
-       <Image className=" m-5 ml-auto mx-auto rounded-full border-4 border-black" src={PFP} alt="Pic of Caleb Babione"/>
+       <Image className=" m-5 ml-auto mx-auto rounded-full border-4 border-green-600" src={PFP} alt="Pic of Caleb Babione"/>
 
        <div>
         <h1 className="font-jetbrains-bold text-3xl">Caleb Babione</h1>
