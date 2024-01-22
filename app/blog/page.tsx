@@ -1,21 +1,36 @@
 import fs from "fs";
 import Link from "next/link";
+import matter from "gray-matter";
+import { PostMetadata } from "../components/PostMetadata";
 
-const getPostMetadata = () => {
+const getPostMetadata = (): PostMetadata[] => {
     const folder = "app/blog/posts";
     const files = fs.readdirSync(folder);
     const markdownPosts = files.filter((file) => file.endsWith(".md"));
-    const slugs = markdownPosts.map((file) => file.replace(".md", ""));
-    return slugs;
+    
+    const posts = markdownPosts.map((fileName) => {
+        const fileContents = fs.readFileSync(`app/blog/posts/${fileName}`, "utf8");
+        const matterResult = matter(fileContents);
+        return {
+            title: matterResult.data.title,
+            date: matterResult.data.date,
+            subtitle: matterResult.data.subtitle,
+            slug: fileName.replace(".md", ""),
+        };
+    });
+
+    return posts;
 };
 
 const BlogPage = () => {
     const postMetadata = getPostMetadata();
     const test = "test";
-    const postPreviews = postMetadata.map((slug) => (
+    const postPreviews = postMetadata.map((post) => (
         <div>
-            <Link href={`posts/${slug}`}>
-                <h1>{slug}</h1>
+            <Link href={`blog/posts/${post.slug}`}>
+                <h1>{post.title}</h1>
+                <p>{post.subtitle}</p>
+                <p>{post.date}</p>
             </Link>
         </div>
         
