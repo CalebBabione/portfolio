@@ -15,8 +15,8 @@ const PostPage = (props: any) => {
   console.log({slug});
   const content = getPostContent(slug);
   return (
-    <div className="">
-      <h1 className="text-center">This is a post: {slug}</h1>
+    <div>
+      <h1 className="text-center font-jetbrains-bold text-4xl my-2">{slug}</h1>
 
         <Markdown className="prose ml-auto mr-auto sm: text-xs" >{content}</Markdown>
     </div>
