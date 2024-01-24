@@ -15,9 +15,10 @@ const PostPage = (props: any) => {
   console.log({slug});
   const content = getPostContent(slug);
   return (
-    <div className=" sm: inline-block">
-      <h1>This is a post: {slug}</h1>
-      <Markdown className=" inline-block sm: max-w-md text-xs " >{content}</Markdown>
+    <div className="">
+      <h1 className="text-center">This is a post: {slug}</h1>
+
+        <Markdown className="prose ml-auto mr-auto sm: text-xs" >{content}</Markdown>
     </div>
   );
 };
