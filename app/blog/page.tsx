@@ -26,7 +26,7 @@ const BlogPage = () => {
     const postMetadata = getPostMetadata();
     const test = "test";
     const postPreviews = postMetadata.map((post) => (
-        <div className=" shadow-md my-2 p-2 ml-auto mr-auto bg-slate-100 rounded-xl sm: max-w-sm">
+        <div key={post.title} className=" shadow-md my-2 p-2 ml-auto mr-auto bg-slate-100 rounded-xl sm: max-w-sm">
             <Link className=" text-sm hover:text-blue-400" href={`blog/posts/${post.slug}`}>
                 <h1>{post.title}</h1>
                 <p>{post.subtitle}</p>
